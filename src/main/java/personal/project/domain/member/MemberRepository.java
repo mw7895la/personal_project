@@ -11,5 +11,5 @@ public interface MemberRepository {
 
     List<Member> findAll();
 
-    Optional<Member> findByLoginId(Member member);
+    Optional<Member> findByLoginId(String loginId);
 }

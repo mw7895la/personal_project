@@ -30,7 +30,14 @@ public class MemoryMemberRepository implements MemberRepository {
 
     //아직 구현 X
     @Override
-    public Optional<Member> findByLoginId(Member member) {
+    public Optional<Member> findByLoginId(String loginId) {
+        List<Member> members = findAll();
+
+        for (Member member : members) {
+            if(member.getUserId().equals(loginId)){
+                return Optional.of(member);
+            }
+        }
         return Optional.empty();
     }
 

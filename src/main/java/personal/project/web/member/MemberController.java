@@ -3,6 +3,7 @@ package personal.project.web.member;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,7 +16,7 @@ import personal.project.domain.member.MemberRepository;
 @RequestMapping("/members")
 public class MemberController {
 
-    private MemberRepository memberRepository;
+    private final MemberRepository memberRepository;
 
     @Autowired
     public MemberController(MemberRepository memberRepository) {
@@ -28,7 +29,10 @@ public class MemberController {
     }
 
     @PostMapping("/add")
-    public String join(@ModelAttribute Member member) {
-        return "members";
+    public String join(@ModelAttribute Member member, BindingResult bindingREsult) {
+
+        memberRepository.save(member);
+
+        return "redirect:/";
     }
 }
