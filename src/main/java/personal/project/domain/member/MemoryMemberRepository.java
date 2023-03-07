@@ -35,10 +35,10 @@ public class MemoryMemberRepository implements MemberRepository {
 
         for (Member member : members) {
             if(member.getUserId().equals(loginId)){
-                return Optional.of(member);
+                return Optional.of(member);     //null이 아닌 객체를 담고있는 Optional 객체를 생성하여 리턴.
             }
         }
-        return Optional.empty();
+        return Optional.empty();                //비어있는 Optional 객체 생성하여 리턴.
     }
 
     @Override

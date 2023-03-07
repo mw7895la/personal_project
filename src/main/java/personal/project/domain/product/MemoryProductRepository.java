@@ -13,9 +13,10 @@ public class MemoryProductRepository implements ProductRepository{
     private static Map<Long, Product> productStore = new ConcurrentHashMap<>();
     private static long sequence=0L;
     @Override
-    public void addProduct(Product product) {
+    public Product addProduct(Product product) {
         product.setId(++sequence);
         productStore.put(product.getId(), product);
+        return product;
     }
 
     @Override

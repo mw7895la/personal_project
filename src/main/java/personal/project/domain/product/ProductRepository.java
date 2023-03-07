@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface ProductRepository {
 
-    void addProduct(Product product);
+    Product addProduct(Product product);
 
     Product findProduct(Long id);
 

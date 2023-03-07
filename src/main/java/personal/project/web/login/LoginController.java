@@ -1,6 +1,7 @@
 package personal.project.web.login;
 
 import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -21,7 +22,7 @@ public class LoginController {
     private final loginService loginService;
 
     @Autowired
-    public LoginController(personal.project.domain.login.loginService loginService) {
+    public LoginController(loginService loginService) {
         this.loginService = loginService;
     }
 
@@ -37,7 +38,7 @@ public class LoginController {
             return "login/loginForm";
         }
 
-        Member loginMember = loginService.login(form.getLoginId(), form.getPassword());
+        Member loginMember = loginService.login(form.getUserId(), form.getPassword());
         if (loginMember == null) {
             bindingResult.reject("loginFail", "아이디 또는 비밀번호가 맞지 않습니다.");
             return "login/loginForm";
@@ -54,7 +55,7 @@ public class LoginController {
     @PostMapping("/logout")
     public String logout(HttpServletRequest request) {
         HttpSession session = request.getSession(false);
-        if(session == null){
+        if(session != null){
             session.invalidate();
         }
 

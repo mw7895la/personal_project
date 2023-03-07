@@ -10,6 +10,10 @@ public class Product {
     private Integer quantity;
     private String specification;
 
+    public Product(){
+
+    }
+
     public Product(String productName, Integer price, Integer quantity, String specification) {
         this.productName = productName;
         this.price = price;
