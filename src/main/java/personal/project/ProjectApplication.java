@@ -4,6 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Profile;
+import personal.project.domain.board.BoardRepository;
 import personal.project.domain.member.MemberRepository;
 import personal.project.domain.product.ProductRepository;
 
@@ -16,7 +17,7 @@ public class ProjectApplication {
 
 	@Bean
 	@Profile("local")
-	public TestDatainit testDatainit(MemberRepository memberRepository, ProductRepository productRepository) {
-		return new TestDatainit(memberRepository, productRepository);
+	public TestDatainit testDatainit(MemberRepository memberRepository, ProductRepository productRepository, BoardRepository boardRepository) {
+		return new TestDatainit(memberRepository, productRepository,boardRepository);
 	}
 }

@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import personal.project.domain.member.Member;
 import personal.project.domain.member.MemberRepository;
 
+import java.util.Optional;
+
 @Slf4j
 @Controller
 @RequestMapping("/members")
@@ -29,7 +31,20 @@ public class MemberController {
     }
 
     @PostMapping("/add")
-    public String join(@ModelAttribute Member member, BindingResult bindingREsult) {
+    public String join(@ModelAttribute Member member, BindingResult bindingResult) {
+
+        String userId = member.getUserId();
+
+        Optional<Member> byUserId = memberRepository.findByLoginId(userId);
+
+        String findUserId = byUserId.get().getUserId();
+
+        log.info("{}", findUserId);
+
+        if (userId.equals(findUserId)) {
+            bindingResult.rejectValue("userId", "duplication", null);
+            return "members/addMemberForm";
+        }
 
         memberRepository.save(member);
 

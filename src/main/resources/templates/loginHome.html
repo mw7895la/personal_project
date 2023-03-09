@@ -15,6 +15,12 @@
   <div class="row">
     <div class="col">
       <button class="w-100 btn btn-secondary btn-lg" type="button"
+              th:onclick="|location.href='@{/board}'|">
+        게시판
+      </button>
+    </div>
+    <div class="col">
+      <button class="w-100 btn btn-secondary btn-lg" type="button"
               th:onclick="|location.href='@{/items}'|">
         상품 관리
       </button>
