@@ -11,6 +11,8 @@ import personal.project.domain.member.MemberRepository;
 import personal.project.domain.product.Product;
 import personal.project.domain.product.ProductRepository;
 
+import java.util.Date;
+
 
 @Profile("local")
 public class TestDatainit {
@@ -33,7 +35,7 @@ public class TestDatainit {
         productRepository.addProduct(new Product("iPad", 15000, 20, "Apple Korea"));
         productRepository.addProduct(new Product("M2 Max", 15000, 20, "Apple Korea"));
 
-        Board board = new Board("첫글", "안녕하세요", member);
+        Board board = new Board("첫글", "안녕하세요", member.getUserId(),new Date().toString());
         boardRepository.register(board);
     }
 }

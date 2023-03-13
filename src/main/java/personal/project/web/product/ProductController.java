@@ -129,6 +129,8 @@ public class ProductController {
 
         productRepository.update(itemId, product);
 
+        redirectAttributes.addAttribute("itemId", itemId);
+
         return "redirect:/items/{itemId}";
 
     }

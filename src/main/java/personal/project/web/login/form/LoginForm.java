@@ -1,4 +1,4 @@
-package personal.project.web.login;
+package personal.project.web.login.form;
 
 
 import lombok.Data;

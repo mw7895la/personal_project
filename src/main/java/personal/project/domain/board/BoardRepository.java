@@ -4,9 +4,13 @@ import java.util.List;
 
 public interface BoardRepository {
 
-    void register(Board board);
+    Board register(Board board);
 
-    void delete(Board board);
+    void delete(long id);
+
+    Board findById(long id);
 
     List<Board> findAll();
+
+    void update(long id, Board board);
 }

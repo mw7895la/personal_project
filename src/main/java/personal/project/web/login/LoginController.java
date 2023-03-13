@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import personal.project.domain.login.loginService;
 import personal.project.domain.member.Member;
 import personal.project.web.SessionConst;
+import personal.project.web.login.form.LoginForm;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
